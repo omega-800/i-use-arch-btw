@@ -1,0 +1,38 @@
+import:
+  #- ~/.config/alacritty/themes/themes/catppuccin.yaml
+  - ~/.config/alacritty/curr_theme.yml
+live_config_reload: true
+font:
+  size: 6 
+  normal:  
+    family: JetBrainsMono Nerd Font Mono
+    style: Regular
+  bold:
+    family: JetBrainsMono Nerd Font Mono
+    style: Bold
+  italic:
+    family: JetBrainsMono Nerd Font Mono
+    style: Italic
+  bold_italic:
+    family: JetBrainsMono Nerd Font Mono
+    style: Bold Ital
+cursor:
+  style:
+    shape: underline
+    blinking: on
+    vi_mode_style: block
+    unfocused_hollow: true
+selection:
+  save_to_clipboard: true
+window:
+  opacity: 0.8
+  padding:
+    x: 8
+    y: 8
+key_bindings:
+        - { key: V,  mods: Control, action: Paste }
+        - { key: C,  mods: Control, action: Copy  }
+        - { key: X,  mods: Control, chars: "\x03" }
+        - { key: K,  mods: Control, action: IncreaseFontSize }
+        - { key: J,  mods: Control, action: DecreaseFontSize }
+        - { key: H,  mods: Control, action: ResetFontSize }

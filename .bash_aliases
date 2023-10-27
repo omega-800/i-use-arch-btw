@@ -1,0 +1,1 @@
+/home/omega/.bash_aliases
