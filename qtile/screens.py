@@ -1,6 +1,6 @@
 from libqtile import bar, widget, qtile
 from libqtile.config import Screen
-from colors import curcolors
+from curcolors import curcolors
 
 theme = dict(
     base03='#002b36',
@@ -19,7 +19,7 @@ theme = dict(
 
 color_schemes = [
     dict(
-        background=theme['base03'],
+        background=colors.colors['catppuccin']['nor_red'],
         foreground=theme['base1']
     ),
     dict(
@@ -29,8 +29,8 @@ color_schemes = [
 ]
 
 # "","","","",
-
 # 󱩅
+
 
 def separator(left_looking=True):
     global color_scheme
@@ -219,6 +219,8 @@ screens = [
             bar_widgets,
             24,
         ),
+        wallpaper='~/documents/img/wallpaper.jpg',
+        wallpaper_mode='fill'
     ),
 ]
 
@@ -230,5 +232,7 @@ if len(qtile.screens) > 1:
                     second_bar_widgets,
                     24,
                 ),
+                wallpaper='~/documents/img/wallpaper.jpg',
+                wallpaper_mode='fill'
             )
         )
