@@ -1,3 +1,9 @@
+pulse
+*/__pycache__
 yay
 systemd
-.pavucontrol.ini
+pavucontrol.ini
+qutebrowser/bookmarks
+qutebrowser/catppuccin
+qutebrowser/quickmarks
+alacritty/themes

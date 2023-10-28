@@ -1,39 +1,62 @@
-colors:
-  primary:
-    background: '#1E1E2E'
-    foreground: '#d6d6d6'
-
-  cursor:
-    text: '#CDD6F4'
-    cursor: '#D9D9D9'
-
-  normal:
-    black: '#181A1F'
-    red: '#E86671'
-    green: '#98C379'
-    yellow: '#E5C07B'
-    blue: '#61AFEF'
-    magenta: '#C678DD'
-    cyan: '#54AFBC'
-    white: '#ABB2BF'
-
-  bright:
-    black: '#5C6370'
-    red: '#E86671'
-    green: '#98C379'
-    yellow: '#E5C07B'
-    blue: '#61AFEF'
-    magenta: '#C678DD'
-    cyan: '#54AFBC'
-    white: '#f7f7f7'
-
-  dim:
-    black: '#5C6370'
-    red: '#74423f'
-    green: '#98C379'
-    yellow: '#E5C07B'
-    blue: '#61AFEF'
-    magenta: '#6e4962'
-    cyan: '#5c8482'
-    white: '#828282'
-
+colors = {
+    "catppuccin": {
+        "background": '#1E1E2E',
+        "foreground": '#d6d6d6',
+        "text": '#CDD6F4',
+        "cursor": '#D9D9D9',
+        "nor_black": '#181A1F',
+        "nor_red": '#E86671',
+        "nor_green": '#98C379',
+        "nor_yellow": '#E5C07B',
+        "nor_blue": '#61AFEF',
+        "nor_magenta": '#C678DD',
+        "nor_cyan": '#54AFBC',
+        "nor_white": '#ABB2BF',
+        "bri_black": '#5C6370',
+        "bri_red": '#E86671',
+        "bri_green": '#98C379',
+        "bri_yellow": '#E5C07B',
+        "bri_blue": '#61AFEF',
+        "bri_magenta": '#C678DD',
+        "bri_cyan": '#54AFBC',
+        "bri_white": '#f7f7f7',
+        "dim_black": '#5C6370',
+        "dim_red": '#74423f',
+        "dim_green": '#98C379',
+        "dim_yellow": '#E5C07B',
+        "dim_blue": '#61AFEF',
+        "dim_magenta": '#6e4962',
+        "dim_cyan": '#5c8482',
+        "dim_white": '#828282',
+    },
+    "other": {
+        "background": '#1E1E2E',
+        "foreground": '#d6d6d6',
+        "text": '#CDD6F4',
+        "cursor": '#D9D9D9',
+        "nor_black": '#181A1F',
+        "nor_red": '#E86671',
+        "nor_green": '#98C379',
+        "nor_yellow": '#E5C07B',
+        "nor_blue": '#61AFEF',
+        "nor_magenta": '#C678DD',
+        "nor_cyan": '#54AFBC',
+        "nor_white": '#ABB2BF',
+        "bri_black": '#5C6370',
+        "bri_red": '#E86671',
+        "bri_green": '#98C379',
+        "bri_yellow": '#E5C07B',
+        "bri_blue": '#61AFEF',
+        "bri_magenta": '#C678DD',
+        "bri_cyan": '#54AFBC',
+        "bri_white": '#f7f7f7',
+        "dim_black": '#5C6370',
+        "dim_red": '#74423f',
+        "dim_green": '#98C379',
+        "dim_yellow": '#E5C07B',
+        "dim_blue": '#61AFEF',
+        "dim_magenta": '#6e4962',
+        "dim_cyan": '#5c8482',
+        "dim_white": '#828282',
+    }
+}
