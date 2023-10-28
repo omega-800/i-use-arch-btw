@@ -38,7 +38,7 @@ require('mason-lspconfig').setup({
         'jsonls',
         'lua_ls',
         'marksman',
-        'pylsp',
+        'pyright',
         'sqlls',
         'svelte',
         'taplo',

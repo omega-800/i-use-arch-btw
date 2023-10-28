@@ -2004,7 +2004,7 @@ c.fonts.default_size = '14px'
 ##   - bottom
 ##   - left
 ##   - right
-c.tabs.position = 'left'
+c.tabs.position = 'top'
 
 ## Which tab to select when the focused tab is removed.
 ## Type: SelectOnRemove
@@ -2021,7 +2021,7 @@ c.tabs.position = 'left'
 ##   - never: Always hide the tab bar.
 ##   - multiple: Hide the tab bar if only one tab is open.
 ##   - switching: Show the tab bar when switching tabs.
-c.tabs.show = 'switching'
+c.tabs.show = 'always'
 
 ## Duration (in milliseconds) to show the tab bar before hiding it when
 ## tabs.show is set to 'switching'.
