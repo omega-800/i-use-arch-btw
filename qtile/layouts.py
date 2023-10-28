@@ -1,6 +1,6 @@
 from libqtile import layout
 from libqtile.config import Match
-from config import curcolors
+from curcolors import curcolors
 
 layouts = [
     layout.Columns(

@@ -26,8 +26,7 @@
 
 from libqtile import hook
 from libqtile.utils import send_notification
-from colors import curcolors
-from keys import keys, mod
+from keys import keys
 from groups import groups
 from layouts import layouts
 from screens import screens

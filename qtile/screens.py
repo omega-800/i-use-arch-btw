@@ -1,30 +1,37 @@
 from libqtile import bar, widget, qtile
 from libqtile.config import Screen
-from curcolors import curcolors
+from random import randint
+from themes.catppuccin_latte import catppuccin_latte as latte
+from themes.catppuccin_macchiato import catppuccin_macchiato as macchiato
+from themes.catppuccin_mocha import catppuccin_mocha as mocha
+from themes.catppuccin_frappe import catppuccin_frappe as frappe
+from libqtile.log_utils import logger
 
-theme = dict(
-    base03='#002b36',
-    base02='#073642',
-    base01='#586e75',
-    base00='#657b83',
-    base0='#839496',
-    base1='#93a1a1',
-    base2='#eee8d5',
-    base3='#fdf6e3',
-    yellow='#b58900',
-    orange='#cb4b16',
-    red='#dc322f',
-    magenta='#d33682'
-)
+themes = [latte, macchiato, mocha, frappe]
 
+theme = themes[randint(0,3)] 
+
+logger.warn(theme['maroon'])
 color_schemes = [
     dict(
-        background=colors.colors['catppuccin']['nor_red'],
-        foreground=theme['base1']
+        background=theme["maroon"],
+        foreground=theme["base"],
+        active=theme['base'],
+        inactive=theme['rosewater'],
+        highlight_color=[theme['maroon'], theme['maroon']],
+        this_current_screen_border=theme['peach'],
+        this_screen_border=theme['pink'],
+        low_background=theme['red'],
     ),
     dict(
-        background=theme['base3'],
-        foreground=theme['base02']
+        background=theme["lavender"],
+        foreground=theme["text"],
+        active=theme['text'],
+        inactive=theme['overlay0'],
+        highlight_color=[theme['lavender'], theme['lavender']],
+        this_current_screen_border=theme['mauve'],
+        this_screen_border=theme['sky'],
+        low_background=theme['yellow'],
     )
 ]
 
@@ -35,6 +42,7 @@ color_schemes = [
 def separator(left_looking=True):
     global color_scheme
     if left_looking:
+        background = color_schemes[separator.current_scheme]["background"]
         separator.current_scheme = 1 - separator.current_scheme
         color_scheme = color_schemes[separator.current_scheme]
 
@@ -42,14 +50,16 @@ def separator(left_looking=True):
             **separator_defaults,
             text="",
             foreground=color_scheme["background"],
-            background=color_scheme["foreground"]
+            background=background
         )
     else:
+        background = color_schemes[1 - separator.current_scheme]["background"]
+
         ret = widget.TextBox(
             **separator_defaults,
             text="",
             foreground=color_scheme["background"],
-            background=color_scheme["foreground"]
+            background=background
         )
 
         separator.current_scheme = 1 - separator.current_scheme
@@ -58,8 +68,8 @@ def separator(left_looking=True):
         return ret
 
 
-color_scheme = color_schemes[1]
-separator.current_scheme = 1
+separator.current_scheme = randint(0,1) 
+color_scheme = color_schemes[separator.current_scheme]
 
 # u'\ue0b0',
 separator_defaults = dict(
@@ -99,12 +109,7 @@ bar_widgets = [
         **widget_defaults,
         **color_scheme,
         highlight_method='line',
-        active=curcolors['bg'],
-        inactive=curcolors['fg'],
-        highlight_color=[curcolors['fg'], curcolors['fg']],
-        this_current_screen_border=curcolors['4'],
-        this_screen_border=curcolors['5'],
-    ),
+            ),
     separator(left_looking=False),
     widget.Prompt(
         **widget_defaults,
@@ -162,7 +167,6 @@ bar_widgets = [
         **widget_defaults,
         **color_scheme,
         format='{char}{percent:2.0%}',
-        low_background=curcolors['fg'],
         low_percentage=0.4,
         notify_below=0.3,
         charge_char='󱐋',
