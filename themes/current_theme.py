@@ -3,9 +3,9 @@ from themes.catppuccin_latte import catppuccin_latte as latte
 from themes.catppuccin_mocha import catppuccin_mocha as mocha
 from themes.catppuccin_frappe import catppuccin_frappe as frappe
 from themes.catppuccin_macchiato import catppuccin_macchiato as macchiato
-from libqtile.log_utils import logger
 
 themes = [latte, macchiato, mocha, frappe]
+
 theme = themes[3]
 #theme = themes[randint(0, 3)]
 
