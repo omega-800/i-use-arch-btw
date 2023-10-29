@@ -8,3 +8,4 @@ config_version: 2
 settings:
   content.notifications.enabled:
     https://www.maketecheasier.com: false
+    https://www.wcostream.tv: false

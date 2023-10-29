@@ -25,7 +25,7 @@ vim.cmd([[
   hi Normal guibg=NONE ctermbg=NONE
   set foldmethod=indent
   set foldnestmax=10
-  set foldlevel=1
+  set foldlevel=5
   set foldenable
   filetype on
   filetype plugin on

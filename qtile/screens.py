@@ -1,42 +1,35 @@
 from libqtile import bar, widget, qtile
 from libqtile.config import Screen
 from random import randint
-from themes.catppuccin_latte import catppuccin_latte as latte
-from themes.catppuccin_macchiato import catppuccin_macchiato as macchiato
-from themes.catppuccin_mocha import catppuccin_mocha as mocha
-from themes.catppuccin_frappe import catppuccin_frappe as frappe
+import sys
 from libqtile.log_utils import logger
+sys.path.insert(0, '/home/omega/.config/themes')
+from current_theme import theme, color_schemes, scheme_i
 
-themes = [latte, macchiato, mocha, frappe]
-
-theme = themes[randint(0,3)] 
-
-logger.warn(theme['maroon'])
 color_schemes = [
     dict(
-        background=theme["maroon"],
-        foreground=theme["base"],
-        active=theme['base'],
-        inactive=theme['rosewater'],
-        highlight_color=[theme['maroon'], theme['maroon']],
-        this_current_screen_border=theme['peach'],
-        this_screen_border=theme['pink'],
+        background=theme["base"],
+        foreground=theme["subtext0"],
+        active=theme['text'],
+        inactive=theme['subtext1'],
+        highlight_color=[theme['overlay0'], theme['overlay0']],
+        this_current_screen_border=theme['lavender'],
+        this_screen_border=theme['blue'],
         low_background=theme['red'],
     ),
     dict(
-        background=theme["lavender"],
-        foreground=theme["text"],
-        active=theme['text'],
-        inactive=theme['overlay0'],
-        highlight_color=[theme['lavender'], theme['lavender']],
-        this_current_screen_border=theme['mauve'],
-        this_screen_border=theme['sky'],
-        low_background=theme['yellow'],
+        background=theme["crust"],
+        foreground=theme["subtext1"],
+        active=theme['subtext0'],
+        inactive=theme['overlay2'],
+        highlight_color=[theme['surface2'], theme['surface2']],
+        this_current_screen_border=theme['rosewater'],
+        this_screen_border=theme['peach'],
+        low_background=theme['red'],
     )
 ]
 
 # "","","","",
-# 󱩅
 
 
 def separator(left_looking=True):
@@ -68,7 +61,7 @@ def separator(left_looking=True):
         return ret
 
 
-separator.current_scheme = randint(0,1) 
+separator.current_scheme = scheme_i
 color_scheme = color_schemes[separator.current_scheme]
 
 # u'\ue0b0',
@@ -109,7 +102,7 @@ bar_widgets = [
         **widget_defaults,
         **color_scheme,
         highlight_method='line',
-            ),
+    ),
     separator(left_looking=False),
     widget.Prompt(
         **widget_defaults,
@@ -125,7 +118,7 @@ bar_widgets = [
         },
         name_transform=lambda name: name.upper(),
     ),
-    widget.StatusNotifier(),
+    # widget.StatusNotifier(),
     widget.Systray(
         icon_size=20,
         **widget_defaults,
@@ -156,11 +149,11 @@ bar_widgets = [
         format=' {load_percent}%',
     ),
     separator(),
-    widget.Volume(
+    widget.Wttr(
         **widget_defaults,
         **color_scheme,
-        emoji=True,
-        emoji_list=['󰖁', '󰝞', '󰖀', '󰕾']
+        location={'Zurich': 'Home'},
+        format="%c%t",
     ),
     separator(),
     widget.Battery(
@@ -177,18 +170,18 @@ bar_widgets = [
         unknown_char='󰂑'
     ),
     separator(),
+    widget.Volume(
+        **widget_defaults,
+        **color_scheme,
+        emoji=True,
+        emoji_list=['󰖁', '󰝞', '󰖀', '󰕾']
+    ),
+    separator(),
     widget.Clock(
         **widget_defaults,
         **color_scheme,
         format="%H:%M 󰥔 %d.%m.%y",
     ),
-    separator(),
-    widget.Wttr(
-        **widget_defaults,
-        **color_scheme,
-        location={'Zurich': 'Home'},
-        format="%c%t",
-    )
 ]
 
 # Second screen bar
@@ -219,7 +212,7 @@ second_bar_widgets = [
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             bar_widgets,
             24,
         ),
@@ -232,7 +225,7 @@ if len(qtile.screens) > 1:
     for i in range(2, len(qtile.screens)):
         screens.append(
             Screen(
-                top=bar.Bar(
+                bottom=bar.Bar(
                     second_bar_widgets,
                     24,
                 ),
@@ -240,3 +233,4 @@ if len(qtile.screens) > 1:
                 wallpaper_mode='fill'
             )
         )
+

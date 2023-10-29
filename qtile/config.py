@@ -30,6 +30,9 @@ from keys import keys
 from groups import groups
 from layouts import layouts
 from screens import screens
+import sys
+sys.path.insert(0, '/home/omega/.config/themes')
+from color_setup import color_setup
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
@@ -48,6 +51,9 @@ wl_input_rules = None
 
 wmname = "LG3D"
 
+@hook.subscribe.startup
+def theme_setup():
+    color_setup()
 
 @hook.subscribe.screen_change
 def restart_on_randr(qtile=None):

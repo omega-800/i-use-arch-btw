@@ -23,9 +23,10 @@ def go_to_group(name: str, switch: bool) -> Callable:
     def _inner(qtile: Qtile) -> None:
 
         if len(qtile.screens) == 1:
-            qtile.groups_map[name].toscreen()
             if switch:
                 qtile.current_window.togroup(name, switch_group=True)
+            else: 
+                qtile.groups_map[name].toscreen()
             return
 
         if switch:
