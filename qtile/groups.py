@@ -7,15 +7,13 @@ from keys import keys, mod
 groups = [
     # Screen affinity here is used to make
     # sure the groups startup on the right screens
-    Group(name="1", screen_affinity=0),
-    Group(name="2", screen_affinity=0),
-    Group(name="3", screen_affinity=0),
-    Group(name="4", screen_affinity=0),
-    Group(name="q", screen_affinity=1),
-    Group(name="w", screen_affinity=1),
-    Group(name="e", screen_affinity=1),
-    Group(name="a", screen_affinity=2),
-    Group(name="s", screen_affinity=2),
+    Group(name="1", label="", screen_affinity=0),
+    Group(name="2", label="", screen_affinity=0),
+    Group(name="3", label="", screen_affinity=0),
+    Group(name="4", label="", screen_affinity=0),
+    Group(name="5", label="󰇧", screen_affinity=1),
+    Group(name="6", label="", screen_affinity=1),
+    Group(name="7", label="󰣇", screen_affinity=2),
 ]
 
 

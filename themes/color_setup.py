@@ -1,14 +1,11 @@
 import os
 import shutil
-from current_theme import color_schemes
-from alacritty_themes import get_colors
+from alacritty_themes import get_colors, set_colors, all_themes
 import sys
 from random import randint
+from libqtile.log_utils import logger
 
-scheme_i = randint(0,1)
-scheme = color_schemes[scheme_i]
-
-def dunst_setup(theme, replacements):
+def dunst_setup(replacements):
     with open('/home/omega/.config/dunst/dunstrc_template') as infile, open('/home/omega/.config/dunst/dunstrc', 'w') as outfile:
         for line in infile:
             for src, target in replacements.items():
@@ -18,7 +15,7 @@ def dunst_setup(theme, replacements):
     os.system("pkill dunst; /usr/bin/dunst &")
 
 
-def alacritty_setup(theme, replacements):
+def alacritty_setup(replacements):
     with open('/home/omega/.config/alacritty/alacritty_template.yml') as infile, open('/home/omega/.config/alacritty/alacritty.yml', 'w') as outfile:
         for line in infile:
             for src, target in replacements.items():
@@ -28,10 +25,13 @@ def alacritty_setup(theme, replacements):
 # def qutebrowser_setup():
     # os.system("pkill qutebrowser; /usr/bin/qutebrowser &")
 
-
-def color_setup(theme_name="catppuccin-mocha"):
+def color_setup(theme_name="random"):
     global scheme, scheme_i, color_schemes
-    theme = get_colors(theme_name)['colors']
+    if theme_name == "random": 
+        theme_name = list(all_themes.keys())[randint(0, len(all_themes.keys()) - 1)]
+    set_colors(theme_name)
+    os.system("dunstify 'theme' "+theme_name)
+    theme = get_colors()
     color_schemes = []
     for shade in [theme['bright'], theme['normal']]:
         color_schemes.append(dict(
@@ -39,16 +39,15 @@ def color_setup(theme_name="catppuccin-mocha"):
             foreground=shade["white"],
             active=theme['cursor']['text'],
             inactive=theme['selection']['text'],
-            highlight_color=[theme['primary']['foreground'],
-                             theme['primary']['foreground']],
-            highlight=theme['primary']['foreground'],
+            highlight_color=[theme['primary']['background'],
+                             theme['primary']['background']],
+            highlight=theme['primary']['background'],
             this_current_screen_border=shade['magenta'],
             this_screen_border=shade['blue'],
             low_background=shade['red'],
         ))
     scheme_i = randint(0, 1)
     scheme = color_schemes[scheme_i]
-    print(theme_name)
     replacements = {
         "$THEME_NAME": theme_name,
         "$FRAME_COLOR": scheme["highlight"],
@@ -65,10 +64,8 @@ def color_setup(theme_name="catppuccin-mocha"):
         "$CRI_FRAME": scheme["low_background"],
         "$CRI_HIGHLIGHT": scheme["active"],
     }
-    print(scheme)
-    print(replacements)
-    dunst_setup(theme, replacements)
-    alacritty_setup(theme, replacements)
+    dunst_setup(replacements)
+    alacritty_setup(replacements)
 
 
 # os.system("sed -i 's/^\(    frame_color = \).*/\1" + scheme["foreground"] + "/' ~/.config/dunst/dunstrc_bak")

@@ -3,10 +3,29 @@ from libqtile.config import Screen
 import sys
 from libqtile.log_utils import logger
 sys.path.insert(0, '/home/omega/.config/themes')
-from color_setup import color_schemes, scheme_i
+from alacritty_themes import get_colors
+from random import randint
+
+theme = get_colors()
+color_schemes = []
+for shade in [theme['bright'], theme['normal']]:
+    color_schemes.append(dict(
+        background=shade["black"],
+        foreground=shade["white"],
+        active=theme['cursor']['text'],
+        inactive=theme['selection']['text'],
+        highlight_color=[theme['primary']['background'],
+                            theme['primary']['background']],
+        highlight=theme['primary']['background'],
+        this_current_screen_border=shade['magenta'],
+        this_screen_border=shade['blue'],
+        low_background=shade['red'],
+    ))
+scheme_i = randint(0, 1)
+scheme = color_schemes[scheme_i]
+
 
 # "","","","",
-
 
 def separator(left_looking=True):
     global color_scheme

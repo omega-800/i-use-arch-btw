@@ -1,5 +1,6 @@
+aerc/accounts.conf
 pulse
-*/__pycache__
+*/**/__pycache__
 yay
 systemd
 pavucontrol.ini
@@ -8,3 +9,6 @@ qutebrowser/catppuccin
 qutebrowser/quickmarks
 alacritty/themes
 nuclear
+Code\ -\ OSS
+dconf
+spotify-tui

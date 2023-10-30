@@ -2,10 +2,7 @@ from libqtile import layout
 from libqtile.config import Match
 import sys
 sys.path.insert(0, '/home/omega/.config/themes')
-from color_setup import scheme
-from libqtile.log_utils import logger
-
-logger.warn(scheme)
+from screens import scheme
 
 layouts = [
     layout.Columns(
