@@ -21,7 +21,7 @@ for shade in [theme['bright'], theme['normal']]:
         this_screen_border=shade['blue'],
         low_background=shade['red'],
     ))
-scheme_i = randint(0, 1)
+scheme_i = 0 #randint(0, 1)
 scheme = color_schemes[scheme_i]
 
 

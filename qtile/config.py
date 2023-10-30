@@ -51,9 +51,16 @@ wl_input_rules = None
 
 wmname = "LG3D"
 
+
 @hook.subscribe.startup
 def theme_setup():
     color_setup()
+
+
+#@hook.subscribe.startup_once
+#def setup():
+#    color_setup()
+
 
 @hook.subscribe.screen_change
 def restart_on_randr(qtile=None):

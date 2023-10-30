@@ -2,7 +2,7 @@ import os
 import shutil
 from alacritty_themes import get_colors, set_colors, all_themes
 import sys
-from random import randint
+from random import randint, choice
 from libqtile.log_utils import logger
 
 def dunst_setup(replacements):
@@ -28,7 +28,7 @@ def alacritty_setup(replacements):
 def color_setup(theme_name="random"):
     global scheme, scheme_i, color_schemes
     if theme_name == "random": 
-        theme_name = list(all_themes.keys())[randint(0, len(all_themes.keys()) - 1)]
+        theme_name = choice(list(all_themes.keys()))
     set_colors(theme_name)
     os.system("dunstify 'theme' "+theme_name)
     theme = get_colors()
@@ -46,7 +46,7 @@ def color_setup(theme_name="random"):
             this_screen_border=shade['blue'],
             low_background=shade['red'],
         ))
-    scheme_i = randint(0, 1)
+    scheme_i = 0 #randint(0, 1)
     scheme = color_schemes[scheme_i]
     replacements = {
         "$THEME_NAME": theme_name,

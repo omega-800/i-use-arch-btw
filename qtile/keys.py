@@ -101,10 +101,13 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "b", lazy.spawn("qutebrowser"), desc="Spawn browser"),
     Key([mod], "m", lazy.spawn("nuclear"), desc="Spawn music player"),
+    Key([mod], "c", lazy.spawn("code"), desc="Spawn VS Code"),
+    Key([mod], "s", lazy.spawn("firefox"), desc="Spawn Firefox"),
     Key([mod, "control"], "b",
         lazy.hide_show_bar(),
         desc="Toggle qtile bar",
         ),
+    Key([mod], "g", lazy.togroup()),
 ]
 
 
