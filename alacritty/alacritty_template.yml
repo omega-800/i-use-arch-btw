@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/themes/themes/$THEME_NAME.yaml
+  - ~/.config/alacritty/themes/themes2/$THEME_NAME.yml
 live_config_reload: true
 font:
   size: 6 

@@ -1,33 +1,9 @@
 from libqtile import bar, widget, qtile
 from libqtile.config import Screen
-from random import randint
 import sys
 from libqtile.log_utils import logger
 sys.path.insert(0, '/home/omega/.config/themes')
-from current_theme import theme, color_schemes, scheme_i
-
-color_schemes = [
-    dict(
-        background=theme["base"],
-        foreground=theme["subtext0"],
-        active=theme['text'],
-        inactive=theme['subtext1'],
-        highlight_color=[theme['overlay0'], theme['overlay0']],
-        this_current_screen_border=theme['lavender'],
-        this_screen_border=theme['blue'],
-        low_background=theme['red'],
-    ),
-    dict(
-        background=theme["crust"],
-        foreground=theme["subtext1"],
-        active=theme['subtext0'],
-        inactive=theme['overlay2'],
-        highlight_color=[theme['surface2'], theme['surface2']],
-        this_current_screen_border=theme['rosewater'],
-        this_screen_border=theme['peach'],
-        low_background=theme['red'],
-    )
-]
+from color_setup import color_schemes, scheme_i
 
 # "","","","",
 

@@ -1,10 +1,12 @@
 import os
 import shutil
-from current_theme import color_schemes, scheme, scheme_i
+from current_theme import color_schemes
 from alacritty_themes import get_colors
 import sys
 from random import randint
 
+scheme_i = randint(0,1)
+scheme = color_schemes[scheme_i]
 
 def dunst_setup(theme, replacements):
     with open('/home/omega/.config/dunst/dunstrc_template') as infile, open('/home/omega/.config/dunst/dunstrc', 'w') as outfile:
@@ -54,11 +56,14 @@ def color_setup(theme_name="catppuccin-mocha"):
         "$FONT_SIZE": "10",
         "$LOW_BACKGROUND": scheme["this_current_screen_border"],
         "$LOW_FOREGROUND": scheme["foreground"],
+        "$LOW_HIGHLIGHT": scheme["active"],
         "$NOR_BACKGROUND": scheme["background"],
         "$NOR_FOREGROUND": scheme["foreground"],
-        "$URG_BACKGROUND": scheme["background"],
-        "$URG_FOREGROUND": scheme["low_background"],
-        "$URG_FRAME": scheme["low_background"],
+        "$NOR_HIGHLIGHT": scheme["active"],
+        "$CRI_BACKGROUND": scheme["background"],
+        "$CRI_FOREGROUND": scheme["low_background"],
+        "$CRI_FRAME": scheme["low_background"],
+        "$CRI_HIGHLIGHT": scheme["active"],
     }
     print(scheme)
     print(replacements)

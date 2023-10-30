@@ -49,10 +49,10 @@
 
     # Set the progress bar height. This includes the frame, so make sure
     # it's at least twice as big as the frame width.
-    progress_bar_height = 20
+    progress_bar_height = 10
 
     # Set the frame width of the progress bar
-    progress_bar_frame_width = 2
+    progress_bar_frame_width = 0
 
     # Set the minimum width for the progress bar
     progress_bar_min_width = 150
@@ -61,7 +61,7 @@
     progress_bar_max_width = 800
 
     # Corner radius for the progress bar. 0 disables rounded corners.
-    progress_bar_corner_radius = 2
+    progress_bar_corner_radius = 5
 
     # Corner radius for the icon image.
     icon_corner_radius = 0
@@ -316,6 +316,7 @@
     background = $LOW_BACKGROUND
     foreground = $LOW_FOREGROUND
     timeout = 10
+    highlight = $LOW_HIGHLIGHT
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
@@ -323,14 +324,16 @@
     background = $NOR_BACKGROUND
     foreground = $NOR_FOREGROUND
     timeout = 10
+    highlight = $NOR_HIGHLIGHT
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_critical]
-    background = $URG_BACKGROUND
-    foreground = $URG_FOREGROUND
-    frame_color = $URG_FRAME
+    background = $CRI_BACKGROUND
+    foreground = $CRI_FOREGROUND
+    frame_color = $CRI_FRAME
     timeout = 0
+    highlight = $CRI_HIGHLIGHT
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon
 

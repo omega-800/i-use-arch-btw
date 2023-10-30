@@ -19,6 +19,7 @@ vim.cmd([[
   set signcolumn
   set colorcolumn="80"
   set cursorline
+  set cursorcolumn
   set autoread
   set updatetime=50
   colorscheme habamax
