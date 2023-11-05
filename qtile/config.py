@@ -66,7 +66,7 @@ def theme_setup():
 def restart_on_randr(qtile=None):
     send_notification("qtile", "what...")
     # TODO only if numbers of screens changed
-    # qtil.cmd_restart()
+    # qtile.cmd_restart()
 
 
 @hook.subscribe.screens_reconfigured

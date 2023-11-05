@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    --use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
     use('mbbill/undotree')
 
@@ -17,11 +17,16 @@ return require('packer').startup(function(use)
     use('tpope/vim-fugitive')
 
     use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
+
+    --[[use {
         'nvim-tree/nvim-tree.lua',
         requires = {
             'nvim-tree/nvim-web-devicons', -- optional
         },
-    }
+    }]]
 
     use {
         'VonHeikemen/lsp-zero.nvim',

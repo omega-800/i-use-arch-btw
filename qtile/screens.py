@@ -1,6 +1,7 @@
 from libqtile import bar, widget, qtile
 from libqtile.config import Screen
 import sys
+from libqtile.core.manager import Qtile
 from libqtile.log_utils import logger
 sys.path.insert(0, '/home/omega/.config/themes')
 from alacritty_themes import get_colors
@@ -144,13 +145,13 @@ bar_widgets = [
         format=' {load_percent}%',
     ),
     separator(),
-    widget.Wttr(
-        **widget_defaults,
-        **color_scheme,
-        location={'Zurich': 'Home'},
-        format="%c%t",
-    ),
-    separator(),
+    #widget.Wttr(
+    #    **widget_defaults,
+    #    **color_scheme,
+    #    location={'Zurich': 'Home'},
+    #    format="%c%t",
+    #),
+    #separator(),
     widget.Battery(
         **widget_defaults,
         **color_scheme,
@@ -217,11 +218,12 @@ screens = [
 ]
 
 if len(qtile.screens) > 1:
-    for i in range(2, len(qtile.screens)):
+    logger.warn(len(qtile.screens))
+    for i in range(1, len(qtile.screens)):
         screens.append(
             Screen(
                 bottom=bar.Bar(
-                    second_bar_widgets,
+                    bar_widgets,
                     24,
                 ),
                 wallpaper='~/documents/img/wallpaper.jpg',

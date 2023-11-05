@@ -1,6 +1,7 @@
 require("myconf")
 
 vim.cmd([[
+  set path=.,,**
   set guicursor=""
   set nu
   set relativenumber

@@ -2,12 +2,26 @@
 from libqtile.lazy import lazy
 from libqtile.core.manager import Qtile
 from libqtile.utils import guess_terminal
-from libqtile.config import Click, Drag, Key
+from libqtile.config import Click, Drag, Key, KeyChord
+import os, sys, subprocess
+sys.path.insert(0, '/home/omega/.config/themes')
+from alacritty_themes import get_themes, set_colors
 
 terminal = guess_terminal()
 # terminal = "alacritty"
 mod = "mod4"
 
+
+@lazy.function
+def screenshot(qtile):
+    os.system('maim /home/omega/documents/img/screenshots/$(date +%s).png')
+
+
+@lazy.function
+def theme(qtile):
+    options = '\n'.join(get_themes())
+    selected = os.popen('printf "'+options+'" | rofi -dmenu').read().replace('\n','')
+    set_colors(selected)
 
 def shuffle_to_screen(direction: str):
     def _inner(qtile: Qtile) -> None:
@@ -86,7 +100,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod, "control"], "w", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key(
         [mod],
         "f",
@@ -99,15 +113,25 @@ keys = [
     Key([mod, "control"], "r", lazy.restart(), desc="Restart"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "b", lazy.spawn("qutebrowser"), desc="Spawn browser"),
-    Key([mod], "m", lazy.spawn("nuclear"), desc="Spawn music player"),
-    Key([mod], "c", lazy.spawn("code"), desc="Spawn VS Code"),
-    Key([mod], "s", lazy.spawn("firefox"), desc="Spawn Firefox"),
     Key([mod, "control"], "b",
         lazy.hide_show_bar(),
         desc="Toggle qtile bar",
         ),
     Key([mod], "g", lazy.togroup()),
+    Key([mod, "shift"], "s", screenshot),
+    Key([mod, "shift"], "t", theme),
+    KeyChord([mod], "s", [
+        Key([], "b", lazy.spawn("qutebrowser"), desc="Spawn browser"),
+        Key([], "m", lazy.spawn("nuclear"), desc="Spawn music player"),
+        Key([], "c", lazy.spawn("code"), desc="Spawn VS Code"),
+        Key([], "f", lazy.spawn("firefox"), desc="Spawn Firefox"),
+        Key([], "v", lazy.spawn("nvim"), desc="Spawn Vim"),
+        Key([], "e", lazy.spawn("aerc"), desc="Spawn Email"),
+        Key([], "r", lazy.spawn("rofi -show drun"), desc="Select app"),
+        Key([], "l", lazy.spawn("lf"), desc="Spawn file explorer"),
+    ],
+        name="Spawn"
+    )
 ]
 
 
@@ -119,4 +143,3 @@ mouse = [
          start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
-

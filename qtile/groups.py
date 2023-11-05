@@ -8,10 +8,10 @@ groups = [
     # Screen affinity here is used to make
     # sure the groups startup on the right screens
     Group(name="1", label="", screen_affinity=0),
-    Group(name="2", label="󰇧", screen_affinity=1),
-    Group(name="3", label="", screen_affinity=2),
-    Group(name="4", label="", screen_affinity=0),
-    Group(name="5", label="", screen_affinity=1),
+    Group(name="2", label="", screen_affinity=0),
+    Group(name="3", label="󰇧", screen_affinity=1),
+    Group(name="4", label="", screen_affinity=1),
+    Group(name="5", label="", screen_affinity=2),
     Group(name="6", label="", screen_affinity=0),
     Group(name="7", label="󰣇", screen_affinity=0),
 ]
@@ -31,20 +31,20 @@ def go_to_group(name: str, switch: bool) -> Callable:
             qtile.current_window.togroup(name, switch_group=False)
 
         if len(qtile.screens) == 2:
-            if name in '1467':
+            if name in '1267':
                 qtile.focus_screen(0)
                 qtile.groups_map[name].toscreen()
-            elif name in '235':
+            elif name in '345':
                 qtile.focus_screen(1)
                 qtile.groups_map[name].toscreen()
 
-        if name in '1467':
+        if name in '1267':
             qtile.focus_screen(0)
             qtile.groups_map[name].toscreen()
-        elif name in '25':
+        elif name in '34':
             qtile.focus_screen(1)
             qtile.groups_map[name].toscreen()
-        elif name == '3':
+        elif name == '5':
             qtile.focus_screen(2)
             qtile.groups_map[name].toscreen()
 

@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/themes/themes2/Tomorrow Night Blue.yml
+  - ~/.config/alacritty/themes/themes2/lovelace.yml
 live_config_reload: true
 font:
   size: 6 
