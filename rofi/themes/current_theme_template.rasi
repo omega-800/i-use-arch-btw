@@ -1,11 +1,11 @@
 
 * {
-    background:     $NOR_BACKGROUND;
-    background-alt: $FRAME_COLOR;
-    foreground:     $NOR_FOREGROUND;
-    selected:       $LOW_BACKGROUND;
-    active:         $NOR_HIGHLIGHT;
-    urgent:         $CRI_FOREGROUND;
+    background:     $COLORS_PRIMARY_BACKGROUND;
+    background-alt: $COLORS_SELECTION_BACKGROUND;
+    foreground:     $COLORS_PRIMARY_FOREGROUND;
+    selected:       $COLORS_NORMAL_MAGENTA;
+    active:         $COLORS_NORMAL_GREEN;
+    urgent:         $COLORS_BRIGHT_RED;
     font:           "$FONT_TYPE";
 }
 

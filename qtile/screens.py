@@ -7,7 +7,7 @@ sys.path.insert(0, '/home/omega/.config/themes')
 from alacritty_themes import get_colors
 from random import randint
 
-theme = get_colors()
+theme = get_colors()['colors']
 color_schemes = []
 for shade in [theme['bright'], theme['normal']]:
     color_schemes.append(dict(

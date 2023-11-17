@@ -21,14 +21,26 @@ def get_themes():
 
 def get_colors():
     with open(curr_theme_path) as stream:
-        return yaml.safe_load(stream)['colors']
+        return yaml.safe_load(stream)
+        #return yaml.safe_load(stream)['colors']
+
+
+def get_replacements(curname="",curdict=get_colors(),repldict={"$FONT_TYPE": "JetBrainsMono Nerd Font Mono", "$FONT_SIZE": "10"}):
+    for k,v in curdict.items():
+        key = ("$" if curname == "" else str(curname).upper()+"_" )+str(k).upper()
+        if isinstance(v, dict):
+            get_replacements(key,v,repldict)
+        else:
+            repldict[key]=v
+    return repldict
 
 
 def set_colors(theme_name: str):
     if theme_name == "random": theme_name = choice(get_themes())
     subprocess.run("dunstify 'theme' '"+theme_name+"'", shell=True)
-    if not theme_name in get_themes(): theme_name = 'catppuccin-mocha'
-    copyfile(all_themes[theme_name], curr_theme_path)
-    with open(curr_theme_path, 'a') as file:
-        file.write("  name: '"+theme_name+"'")
+    #if not theme_name in get_themes(): theme_name = 'catppuccin-mocha'
+    if theme_name in get_themes():
+        copyfile(all_themes[theme_name], curr_theme_path)
+        with open(curr_theme_path, 'a') as file:
+            file.write("  name: '"+theme_name+"'")
     

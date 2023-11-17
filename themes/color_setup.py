@@ -1,5 +1,5 @@
 import os, sys, subprocess, shutil
-from alacritty_themes import get_colors, set_colors, get_themes
+from alacritty_themes import get_colors, set_colors, get_themes, get_replacements
 from random import randint, choice
 from libqtile.log_utils import logger
 from libqtile.core.manager import Qtile
@@ -33,39 +33,7 @@ def rofi_setup(replacements):
 
 
 def color_setup():
-    theme = get_colors()
-    color_schemes = []
-    for shade in [theme['bright'], theme['normal']]:
-        color_schemes.append(dict(
-            background=shade["black"],
-            foreground=shade["white"],
-            active=theme['cursor']['text'],
-            inactive=theme['selection']['text'],
-            highlight_color=[theme['primary']['background'],
-                             theme['primary']['background']],
-            highlight=theme['primary']['background'],
-            this_current_screen_border=shade['magenta'],
-            this_screen_border=shade['blue'],
-            low_background=shade['red'],
-        ))
-    scheme_i = 0 #randint(0, 1)
-    scheme = color_schemes[scheme_i]
-    replacements = {
-        "$THEME_NAME": theme['name'],
-        "$FRAME_COLOR": scheme["highlight"],
-        "$FONT_TYPE": "JetBrainsMono Nerd Font Mono",
-        "$FONT_SIZE": "10",
-        "$LOW_BACKGROUND": scheme["this_current_screen_border"],
-        "$LOW_FOREGROUND": scheme["foreground"],
-        "$LOW_HIGHLIGHT": scheme["active"],
-        "$NOR_BACKGROUND": scheme["background"],
-        "$NOR_FOREGROUND": scheme["foreground"],
-        "$NOR_HIGHLIGHT": scheme["active"],
-        "$CRI_BACKGROUND": scheme["background"],
-        "$CRI_FOREGROUND": scheme["low_background"],
-        "$CRI_FRAME": scheme["low_background"],
-        "$CRI_HIGHLIGHT": scheme["active"],
-    }
+    replacements = get_replacements()
     dunst_setup(replacements)
     alacritty_setup(replacements)
     rofi_setup(replacements)
@@ -79,3 +47,4 @@ def color_setup():
 
 #if len(sys.argv) > 1:
 #    set_colors(theme_name=sys.argv[1])
+

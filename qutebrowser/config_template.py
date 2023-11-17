@@ -10,9 +10,6 @@
 ##   qute://help/configuring.html
 ##   qute://help/settings.html
 
-import catppuccin
-catppuccin.setup(c, 'mocha', True)
-
 ## This is here so configs done via the GUI are still loaded.
 ## Remove it to not load settings done via the GUI.
 config.load_autoconfig(True)

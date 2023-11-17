@@ -24,15 +24,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import hook
-from libqtile.utils import send_notification
 from keys import keys
 from groups import groups
 from layouts import layouts
 from screens import screens
-import sys
-sys.path.insert(0, '/home/omega/.config/themes')
-from color_setup import color_setup
+from hooks import *
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
@@ -50,40 +46,3 @@ auto_minimize = True
 wl_input_rules = None
 
 wmname = "LG3D"
-
-
-@hook.subscribe.startup
-def theme_setup():
-    color_setup()
-
-
-#@hook.subscribe.startup_once
-#def setup():
-#    color_setup()
-
-
-@hook.subscribe.screen_change
-def restart_on_randr(qtile=None):
-    send_notification("qtile", "what...")
-    # TODO only if numbers of screens changed
-    # qtile.cmd_restart()
-
-
-@hook.subscribe.screens_reconfigured
-def restart_on_config(qtile=None):
-    send_notification("qtile", "Screen reconfiguration detected.")
-
-
-"""
-@hook.subscribe.startup
-def detect_screens():
-    while len(screens) < len(qtil.conn.pseudoscreens):
-        screens.append(Screen(
-            top=bar.Bar([
-                widget.GroupBox(
-                    disable_drag=True,
-                ),
-                widget.CurrentLayout(),
-            ], 32, ),
-        ))
-"""
