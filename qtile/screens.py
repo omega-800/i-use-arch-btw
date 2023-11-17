@@ -9,12 +9,13 @@ from random import randint
 
 theme = get_colors()['colors']
 color_schemes = []
+i=0
 for shade in [theme['bright'], theme['normal']]:
     color_schemes.append(dict(
-        background=shade["black"],
-        foreground=shade["white"],
-        active=theme['cursor']['text'],
-        inactive=theme['selection']['text'],
+        background=theme["primary"]["background" if i == 0 else "foreground"],
+        foreground=theme["primary"]["background" if i == 1 else "foreground"],
+        active=theme['cursor']['cursor'],
+        inactive=theme['selection']['background'],
         highlight_color=[theme['primary']['background'],
                             theme['primary']['background']],
         highlight=theme['primary']['background'],
@@ -22,6 +23,8 @@ for shade in [theme['bright'], theme['normal']]:
         this_screen_border=shade['blue'],
         low_background=shade['red'],
     ))
+    i+=1
+
 scheme_i = 0 #randint(0, 1)
 scheme = color_schemes[scheme_i]
 

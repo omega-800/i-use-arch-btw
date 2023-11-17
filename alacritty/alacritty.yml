@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/themes/themes2/SoftServer.yml
+  - ~/.config/alacritty/themes/themes2/Hopscotch.yml
 live_config_reload: true
 font:
   size: 6 
