@@ -5,7 +5,7 @@ from libqtile.core.manager import Qtile
 import sys
 sys.path.insert(0, '/home/omega/.config/themes')
 from color_setup import color_setup
-
+"""
 @hook.subscribe.client_new
 def to_group(window):
     if window.window.get_wm_class() == ['Alacritty', 'Alacritty']:
@@ -19,7 +19,7 @@ def to_group(window):
     if window.window.get_wm_class() == ['nuclear', 'nuclear']:
         window.togroup("5")
     window.focus()
-
+"""
 
 @hook.subscribe.startup
 def theme_setup():

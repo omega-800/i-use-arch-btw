@@ -1,15 +1,15 @@
+from random import randint
+from alacritty_themes import get_colors
 from libqtile import bar, widget, qtile
 from libqtile.config import Screen
 import sys
 from libqtile.core.manager import Qtile
 from libqtile.log_utils import logger
 sys.path.insert(0, '/home/omega/.config/themes')
-from alacritty_themes import get_colors
-from random import randint
 
 theme = get_colors()['colors']
 color_schemes = []
-i=0
+i = 0
 for shade in [theme['bright'], theme['normal']]:
     color_schemes.append(dict(
         background=theme["primary"]["background" if i == 0 else "foreground"],
@@ -17,15 +17,15 @@ for shade in [theme['bright'], theme['normal']]:
         active=theme['cursor']['cursor'],
         inactive=theme['selection']['background'],
         highlight_color=[theme['primary']['background'],
-                            theme['primary']['background']],
+                         theme['primary']['background']],
         highlight=theme['primary']['background'],
         this_current_screen_border=shade['magenta'],
         this_screen_border=shade['blue'],
         low_background=shade['red'],
     ))
-    i+=1
+    i += 1
 
-scheme_i = 0 #randint(0, 1)
+scheme_i = 0  # randint(0, 1)
 scheme = color_schemes[scheme_i]
 
 
@@ -148,13 +148,13 @@ bar_widgets = [
         format=' {load_percent}%',
     ),
     separator(),
-    #widget.Wttr(
+    # widget.Wttr(
     #    **widget_defaults,
     #    **color_scheme,
     #    location={'Zurich': 'Home'},
     #    format="%c%t",
-    #),
-    #separator(),
+    # ),
+    # separator(),
     widget.Battery(
         **widget_defaults,
         **color_scheme,
@@ -215,8 +215,9 @@ screens = [
             bar_widgets,
             24,
         ),
-        wallpaper='~/documents/img/wallpaper.jpg',
-        wallpaper_mode='fill'
+        # wallpaper='~/documents/img/wallpapers/chill-fren.png',
+        wallpaper_mode='fill',
+        wallpaper='~/documents/img/wallpapers/deutschland.jpg',
     ),
 ]
 
@@ -229,8 +230,7 @@ if len(qtile.screens) > 1:
                     bar_widgets,
                     24,
                 ),
-                wallpaper='~/documents/img/wallpaper.jpg',
+                wallpaper='~/documents/img/wallpapers/wallpaper.jpg',
                 wallpaper_mode='fill'
             )
         )
-

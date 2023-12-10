@@ -9,3 +9,5 @@ settings:
   content.notifications.enabled:
     https://www.maketecheasier.com: false
     https://www.wcostream.tv: false
+  content.register_protocol_handler:
+    https://calendar.google.com?cid=%25s: false

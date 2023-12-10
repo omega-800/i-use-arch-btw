@@ -6,6 +6,7 @@ from libqtile.config import Click, Drag, Key, KeyChord
 import os, sys, subprocess
 sys.path.insert(0, '/home/omega/.config/themes')
 from alacritty_themes import get_themes, set_colors
+from libqtile.log_utils import logger
 
 terminal = guess_terminal()
 # terminal = "alacritty"
@@ -44,6 +45,12 @@ def shuffle_to_screen(direction: str):
         if direction == "k":
             lazy.layout.up()
     return _inner
+
+
+@lazy.function
+def spawn_to_group(qtile, client, group):
+    qtile.groups_map[group].toscreen()
+    qtile.spawn(client)
 
 
 def switch_screens(qtile):
@@ -111,7 +118,7 @@ keys = [
         desc="Toggle floating on the focused window"),
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "r", lazy.restart(), desc="Restart"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtiqle"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod, "control"], "b",
         lazy.hide_show_bar(),
@@ -120,15 +127,22 @@ keys = [
     Key([mod], "g", lazy.togroup()),
     Key([mod, "shift"], "s", screenshot),
     Key([mod, "shift"], "t", theme),
+    Key([mod], "x", lazy.spawn("slock"), desc="Lock screen"),
     KeyChord([mod], "s", [
-        Key([], "b", lazy.spawn("qutebrowser"), desc="Spawn browser"),
-        Key([], "m", lazy.spawn("nuclear"), desc="Spawn music player"),
-        Key([], "c", lazy.spawn("code"), desc="Spawn VS Code"),
-        Key([], "f", lazy.spawn("firefox"), desc="Spawn Firefox"),
-        Key([], "v", lazy.spawn("nvim"), desc="Spawn Vim"),
-        Key([], "e", lazy.spawn("aerc"), desc="Spawn Email"),
         Key([], "r", lazy.spawn("rofi -show drun"), desc="Select app"),
-        Key([], "l", lazy.spawn("lf"), desc="Spawn file explorer"),
+        Key([], "m", spawn_to_group("minecraft-launcher","1"), desc="Spawn minecraft"),
+        Key([], "o", spawn_to_group("obsidian", "1"), desc="Spawn obsidian"),
+        Key([], "c", spawn_to_group("code","2"), desc="Spawn VS Code"),
+        Key([], "v", spawn_to_group("alacritty -e nvim", "2"), desc="Spawn Vim"),
+        Key([], "b", spawn_to_group("qutebrowser", "3"), desc="Spawn browser"),
+        Key([], "f", spawn_to_group("firefox","3"), desc="Spawn Firefox"),
+        Key([], "d", spawn_to_group("discord","4"), desc="Spawn discord"),
+        Key([], "e", spawn_to_group("alacritty -e aerc", "4"), desc="Spawn Email"),
+        Key([], "u", spawn_to_group("nuclear","5"), desc="Spawn music player"),
+        Key([], "n", spawn_to_group("alacritty -e ncmpcpp","5"), desc="Spawn music player"),
+        Key([], "x", spawn_to_group("alacritty -e lf", "6"), desc="Spawn file explorer"),
+        Key([], "l", spawn_to_group("libreoffice", "6"), desc="Spawn libre office"),
+        Key([], "h", spawn_to_group("homebank", "7"), desc="Spawn finance app"),
     ],
         name="Spawn"
     )
