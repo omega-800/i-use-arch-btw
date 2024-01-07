@@ -1,0 +1,7 @@
+[init]
+	defaultBranch = main
+[user]
+	email = gshevoroshkin@gmail.com
+	name = omega-800
+[credential]
+	helper = cache

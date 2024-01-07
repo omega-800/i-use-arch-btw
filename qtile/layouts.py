@@ -4,17 +4,27 @@ import sys
 sys.path.insert(0, '/home/omega/.config/themes')
 from screens import scheme
 
+bw=4
+mg=8
+
+layout_defaults = dict(
+        border_focus=scheme['foreground'],
+        border_normal=scheme['background'],
+        border_width=bw,
+        margin=mg,
+)
+
 layouts = [
     layout.Columns(
-        border_focus=scheme['highlight_color'],
-        border_normal=scheme['background'],
-        border_focus_stack=[scheme['active'], scheme['inactive']],
-        border_width=4,
-        margin=8,
-        margin_on_single=8,
+        **layout_defaults,
+        border_focus_stack=scheme['this_current_screen_border'],
+        border_normal_stack=scheme['this_screen_border'],
+        margin_on_single=mg,
         border_on_single=True
     ),
-    layout.Max(),
+    layout.Max(
+        **layout_defaults
+    ),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -31,9 +41,9 @@ layouts = [
         active_bg=scheme['highlight'],
         font="JetBrainsMono Nerd Font Mono",
         fontsize=18,
-        padding=6,
+        padding=mg,
         section_fontsize=14,
-        section_padding=4,
+        section_padding=bw,
         section_fg=scheme['foreground']
     ),
     # layout.VerticalTile(),

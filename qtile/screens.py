@@ -214,10 +214,10 @@ screens = [
         top=bar.Bar(
             bar_widgets,
             24,
+            margin=8,
         ),
-        # wallpaper='~/documents/img/wallpapers/chill-fren.png',
-        wallpaper_mode='fill',
-        wallpaper='~/documents/img/wallpapers/deutschland.jpg',
+        # wallpaper='~/documents/img/wallpapers/wallpaper_cherry_blossom.jpg',
+        # wallpaper_mode='fill',
     ),
 ]
 
@@ -229,6 +229,7 @@ if len(qtile.screens) > 1:
                 bottom=bar.Bar(
                     bar_widgets,
                     24,
+                    margin=8,
                 ),
                 wallpaper='~/documents/img/wallpapers/wallpaper.jpg',
                 wallpaper_mode='fill'

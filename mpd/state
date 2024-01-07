@@ -1,40 +1,50 @@
 sw_volume: 100
 audio_device_state:1:default detected output
 state: pause
-current: 19
-time: 338.613000
+current: 9
+time: 345.781000
 random: 0
-repeat: 0
+repeat: 1
 single: 0
 consume: 0
 crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
-0:Elderwind/The Magic of Nature/1. In the Snow.mp3
-1:Elderwind/The Magic of Nature/2. The Magic of Nature.mp3
-2:Elderwind/The Magic of Nature/3. Shining Stars.mp3
-3:Elderwind/The Magic of Nature/4. The Nature Stuck in a Dream.mp3
-4:Elderwind/The Magic of Nature/5. Last Winter Night.mp3
-5:Elderwind/The Magic of Nature/6. The Approach of Spring.mp3
-6:Elderwind/The Magic of Nature/7. When the Rain Starts Again.mp3
-7:Elderwind/The Magic of Nature/8. Cold in the Soul.mp3
-8:Grai/Пепел/1. Марево.mp3
-9:Grai/Пепел/2. Песня мертвой воды.mp3
-10:Grai/Пепел/3. Колодец.mp3
-11:Grai/Пепел/4. Мгла со мной.mp3
-12:Grai/Пепел/5. Доня.mp3
-13:Grai/Пепел/6. Поступь зимы.mp3
-14:Grai/Пепел/7. Тень.mp3
-15:Grai/Пепел/8. Пепел.mp3
-16:Grai/Пепел/9. Крепость.mp3
-17:Grai/Пепел/10. Прощание.mp3
-18:Grai/Пепел/11. Пир мертвецов.mp3
-19:Type O Negative/Slow, Deep and Hard (2009 Remaster)/1. Unsuccessfully Coping with the Natural Beauty of Infidelity.mp3
-20:Type O Negative/Slow, Deep and Hard (2009 Remaster)/2. Der Untermensch.mp3
-21:Type O Negative/Slow, Deep and Hard (2009 Remaster)/3. Xero Tolerance.mp3
-22:Type O Negative/Slow, Deep and Hard (2009 Remaster)/4. Prelude to Agony.mp3
-23:Type O Negative/Slow, Deep and Hard (2009 Remaster)/5. Glass Walls of Limbo - Dance Mix.mp3
-24:Type O Negative/Slow, Deep and Hard (2009 Remaster)/6. The Misinterpretation of Silence and Its Disastrous Consequences.mp3
-25:Type O Negative/Slow, Deep and Hard (2009 Remaster)/7. Gravitational Constant: G = 6.67 x 10⁻⁸ cm⁻³ gm⁻¹ sec⁻².mp3
+0:spotify_likes/Despot - Windir.mp3
+1:spotify_likes/Todeswalzer - Windir.mp3
+2:Elderwind/The Magic of Nature/1. In the Snow.mp3
+3:Elderwind/The Magic of Nature/2. The Magic of Nature.mp3
+4:Elderwind/The Magic of Nature/3. Shining Stars.mp3
+5:Elderwind/The Magic of Nature/4. The Nature Stuck in a Dream.mp3
+6:Elderwind/The Magic of Nature/5. Last Winter Night.mp3
+7:Elderwind/The Magic of Nature/6. The Approach of Spring.mp3
+8:Elderwind/The Magic of Nature/7. When the Rain Starts Again.mp3
+9:Elderwind/The Magic of Nature/8. Cold in the Soul.mp3
+10:Ghost Bath/Moonlover/1. The Sleeping Fields.mp3
+11:Ghost Bath/Moonlover/2. Golden Number.mp3
+12:Ghost Bath/Moonlover/3. Happyhouse.mp3
+13:Ghost Bath/Moonlover/4. Beneath the Shade Tree.mp3
+14:Ghost Bath/Moonlover/5. The Silver Flower, Pt. 1.mp3
+15:Ghost Bath/Moonlover/6. The Silver Flower, Pt. 2.mp3
+16:Ghost Bath/Moonlover/7. Death and the Maiden.mp3
+17:Ghost Bath/Moonlover/8. Ascension (Bonus Track).mp3
+18:Ghost Bath/Funeral/1. Torment.mp3
+19:Ghost Bath/Funeral/2. Burial.mp3
+20:Ghost Bath/Funeral/3. Silence.mp3
+21:Ghost Bath/Funeral/4. Procession.mp3
+22:Ghost Bath/Funeral/5. Dead.mp3
+23:Ghost Bath/Funeral/6. Sorrow.mp3
+24:Ghost Bath/Funeral/7. Calling.mp3
+25:Ghost Bath/Funeral/8. Continuity.mp3
+26:Ghost Bath/Funeral/9. March.mp3
+27:Ghost Bath/Funeral/10. Afterlife.mp3
+28:Ghost Bath/Funeral/11. Birth.mp3
+29:Ghost Bath/Funeral/12. Forever.mp3
+30:Burzum/Filosofem/1. Dunkelheit.mp3
+31:Burzum/Filosofem/2. Jesus' Tod.mp3
+32:Burzum/Filosofem/3. Erblicket Die Tochter Des Firmaments.mp3
+33:Burzum/Filosofem/4. Gebrechlichkeit I.mp3
+34:Burzum/Filosofem/5. Rundgang Um Die Transzendentale Saule Der Singularitat.mp3
+35:Burzum/Filosofem/6. Gebrechlichkeit II.mp3
 playlist_end

@@ -24,7 +24,7 @@ def theme(qtile):
     selected = os.popen('printf "'+options+'" | rofi -dmenu').read().replace('\n','')
     set_colors(selected)
 
-def shuffle_to_screen(direction: str):
+def focus_to_screen(direction: str):
     def _inner(qtile: Qtile) -> None:
         lcur = qtile.current_layout.info()["current"]
         lmax = len(qtile.current_layout.info()["columns"]) - 1
@@ -69,9 +69,9 @@ keys = [
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
     Key([mod, "control"], "t", lazy.function(switch_screens)),
-    Key([mod], "h", lazy.function(shuffle_to_screen("h")),
+    Key([mod], "h", lazy.function(focus_to_screen("h")),
         desc="Move focus to left"),
-    Key([mod], "l", lazy.function(shuffle_to_screen("l")),
+    Key([mod], "l", lazy.function(focus_to_screen("l")),
         desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
@@ -93,7 +93,10 @@ keys = [
         desc="Grow window to the right"),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key([mod, "shift", "control"], "h", lazy.layout.swap_column_left()),
+    Key([mod, "shift", "control"], "l", lazy.layout.swap_column_right()),
+    Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
+    Key([mod, "shift"], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -129,7 +132,7 @@ keys = [
     Key([mod, "shift"], "t", theme),
     Key([mod], "x", lazy.spawn("slock"), desc="Lock screen"),
     KeyChord([mod], "s", [
-        Key([], "r", lazy.spawn("rofi -show drun"), desc="Select app"),
+        Key([], "s", lazy.spawn("rofi -show drun"), desc="Select app"),
         Key([], "m", spawn_to_group("minecraft-launcher","1"), desc="Spawn minecraft"),
         Key([], "o", spawn_to_group("obsidian", "1"), desc="Spawn obsidian"),
         Key([], "c", spawn_to_group("code","2"), desc="Spawn VS Code"),
@@ -138,14 +141,25 @@ keys = [
         Key([], "f", spawn_to_group("firefox","3"), desc="Spawn Firefox"),
         Key([], "d", spawn_to_group("discord","4"), desc="Spawn discord"),
         Key([], "e", spawn_to_group("alacritty -e aerc", "4"), desc="Spawn Email"),
-        Key([], "u", spawn_to_group("nuclear","5"), desc="Spawn music player"),
         Key([], "n", spawn_to_group("alacritty -e ncmpcpp","5"), desc="Spawn music player"),
+        Key([], "r", spawn_to_group("renoise", "5"), desc="Spawn tracker"),
         Key([], "x", spawn_to_group("alacritty -e lf", "6"), desc="Spawn file explorer"),
         Key([], "l", spawn_to_group("libreoffice", "6"), desc="Spawn libre office"),
         Key([], "h", spawn_to_group("homebank", "7"), desc="Spawn finance app"),
     ],
         name="Spawn"
-    )
+    ),
+    KeyChord([mod], "n", [
+        Key([], "k", lazy.spawn("mpc prev")),
+        Key([], "j", lazy.spawn("mpc next")),
+        Key([], "l", lazy.spawn("mpc seek + 00:00:05")),
+        Key([], "h", lazy.spawn("mpc seek - 00:00:05")),
+        Key([], "p", lazy.spawn("mpc toggle")),
+        Key([], "s", lazy.spawn("mpc random")),
+        Key([], "r", lazy.spawn("mpc repeat")),
+    ],
+        name="Music"
+    ),
 ]
 
 
